@@ -1,0 +1,97 @@
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    max-height: 200px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background-color: #f0f0f067;
+    margin-bottom: 20px;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .minimized {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .minimized button{
+    margin: 0 5px;
+  
+  }
+  
+  .player-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .player-controls {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .player-controls button{
+    margin: 0 5px;
+  }
+  
+  .player-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #888;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .player-btn:hover {
+    background-color: #666;
+  }
+  
+  .volume-control{
+    margin-top: 20px;
+  }
+
+
+  .interface {
+    position: fixed;
+    height: 0;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 75px;
+
+  
+
+  }
+  .time{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 100%;
+    color: white;
+    background-color: #00000071;
+    padding: 2px;
+    font-size: 50px;
+    text-align: center;
+    align-items: center;
+      pointer-events: none;
+  }
