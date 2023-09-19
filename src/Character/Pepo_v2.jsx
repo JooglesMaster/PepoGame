@@ -13,7 +13,7 @@ import * as THREE from 'three'
 
 export default function Pepo2({ props, mixer, actions,setDamping}) {
   const ref = useRef();
-  const { nodes, materials, animations } = useGLTF('./models/pepo_v2.glb');
+  const { nodes, materials, animations } = useGLTF('./models/pepo_v3.glb');
 
   useEffect(() => {
     if (animations && ref.current) {
@@ -49,4 +49,4 @@ export default function Pepo2({ props, mixer, actions,setDamping}) {
   );
 }
 
-useGLTF.preload('./models/pepo_v2.glb')
+useGLTF.preload('./models/pepo_v3.glb')

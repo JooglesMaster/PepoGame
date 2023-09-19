@@ -1,37 +1,71 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { FaPlay, FaPause, FaForward, FaBackward, FaCompress, FaExpand } from 'react-icons/fa';
+import { SlReload } from "react-icons/sl";
 import '../CSS/Media.css';
+import useGame from "../Stores/useGame";
+
 
 function Media_Player() {
   const [playing, setPlaying] = useState(false);
-  const [videoIndex, setVideoIndex] = useState(0);
-  const [minimized, setMinimized] = useState(true);  // New state for minimizing the player
-  const [volume, setVolume] = useState(0.8); // start at 80% volume
+  const [minimized, setMinimized] = useState(true); 
+  const [volume, setVolume] = useState(0.8); 
+  const restart = useGame(state => state.restart);
+  const setRestart = useGame(state => state.setRestart);
+
 
 
   const playlist = [
     {
-      url: 'https://www.youtube.com/watch?v=xX2TZZPISng',
-      title: 'Love Story Hardstyle',
+      url: 'https://www.youtube.com/watch?v=MnFSMwOhlFg&ab_channel=Liquicity',
+      title: 'Dreamcatcher (Dualistic Remix)',
     },
     {
-      url: 'https://www.youtube.com/watch?v=E58mudmdVt0&list=PLwdgADfukuHhYsjGqlmUuI_8xjpFbQzae&index=14&ab_channel=Pleyya',
-      title: 'Sweet But Psycho Hardstyle',
+      url: 'https://www.youtube.com/watch?v=tEcggRukZCs&ab_channel=Liquicity',
+      title: 'Ghost Assassin',
     },
-    // more videos...
+    {
+      url: 'https://www.youtube.com/watch?v=uO7kCUjUaUE&ab_channel=SuicideSheeep',
+      title: 'Leave the Lights On',
+    },
+    {
+      url: 'https://www.youtube.com/watch?v=HdeYwObD-j4&ab_channel=DaftPunk',
+      title: 'Robot Rock',
+    },
+    {
+      url: 'https://www.youtube.com/watch?v=mNjmGuJY5OE&ab_channel=LondonRecords',
+      title: 'Halcyon And On And On',
+    },
+    {
+      url: 'https://www.youtube.com/watch?v=MnFSMwOhlFg&ab_channel=Liquicity',
+      title: 'Dreamcatcher (Dualistic Remix)',
+    },
+    {
+      url: 'https://www.youtube.com/watch?v=CPK2HwYzjkA&ab_channel=bonnietylerVEVO',
+      title: 'Holding out for a Hero',
+    },
+    {
+      url: 'https://www.youtube.com/watch?v=wDSrUiVPpdM&ab_channel=T%26Sugah-Topic',
+      title: 'I Ran ',
+    },
   ];
+  const [videoIndex, setVideoIndex] = useState(Math.floor(Math.random() * playlist.length));
 
   const handleClick = () => {
     setPlaying(!playing);
   };
 
   const handleNext = () => {
-    setVideoIndex((videoIndex + 1) % playlist.length); // go to next video or loop back to start
+    setVideoIndex((videoIndex + 1) % playlist.length); 
   };
 
   const handleBack = () => {
-    setVideoIndex((videoIndex - 1 + playlist.length) % playlist.length); // go to previous video or loop back to end
+    setVideoIndex((videoIndex - 1 + playlist.length) % playlist.length); 
+  };
+
+  const handleRefresh = () => {
+    setRestart(true);
+    console.log(restart);
   };
 
   const playerClass = minimized ? 'player minimized' : 'player';
@@ -52,6 +86,9 @@ function Media_Player() {
           <button className="player-btn" onClick={() => setMinimized(!minimized)}>
             {minimized ? <FaExpand /> : <FaCompress />}
           </button>
+          <button className="player-btn" onClick={handleRefresh}>
+            {minimized ? <SlReload /> : <SlReload />}
+          </button>
         </div>
         {!minimized && (
         <div className="volume-control">
@@ -71,7 +108,7 @@ function Media_Player() {
         playing={playing}
         width='0'
         height='0'
-        onEnded={handleNext} // Go to next video when current one ends
+        onEnded={handleNext} 
         volume={volume}
       />
     </>

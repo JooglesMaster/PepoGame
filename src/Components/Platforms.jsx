@@ -1,7 +1,6 @@
 import { useBox } from "@react-three/cannon";
 import { Box, TransformControls } from "@react-three/drei";
 import{useRef} from 'react';
-import data from '../Character/output.json';
 
  function Platform({ position, args, ...props}) {
     const [ref] = useBox(() => ({ 
@@ -11,7 +10,7 @@ import data from '../Character/output.json';
         ...props,
         collisionFilterGroup: 1,
         collisionFilterMask: 1,
-        margin: 0.5, // Adds a 0.5 unit margin around the platform
+        margin: 2, // Adds a 0.5 unit margin around the platform
         }), useRef())
 
 
@@ -24,10 +23,9 @@ import data from '../Character/output.json';
 }
 
 
-console.log('data', data.objects)
 
 
-const Platforms = ({ material }) => {
+const Platforms = ({ material,data }) => {
 
   const platforms = Object.values(data.objects).map((object, index) => {
 
@@ -42,6 +40,7 @@ const Platforms = ({ material }) => {
         position={position}
         args={args}
         material={material}
+        data={data}
       />
     );
   });

@@ -6,8 +6,8 @@ const Lights = () => {
     <>
       <directionalLight
         castShadow
-        position={[30, 30, 10]}
-        intensity={1.5}
+        position={[-20, 30, -10]}
+        intensity={3}
         shadow-mapSize={[4096, 4096]}
         shadow-camera-near={1}
         shadow-camera-far={50}
@@ -16,7 +16,7 @@ const Lights = () => {
         shadow-camera-bottom={-50}
         shadow-camera-left={-50}
       />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1}  />
     </>
   )
 }
